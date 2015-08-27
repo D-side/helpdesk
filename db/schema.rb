@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827093944) do
+ActiveRecord::Schema.define(version: 20150827104040) do
 
   create_table "tickets", force: :cascade do |t|
     t.string   "reference"
     t.integer  "owner_id"
     t.string   "state"
-    t.string   "client_name"
-    t.string   "client_email"
+    t.string   "customer_name"
+    t.string   "customer_email"
     t.string   "subject"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.text     "body"
   end
 
   add_index "tickets", ["owner_id"], name: "index_tickets_on_owner_id"

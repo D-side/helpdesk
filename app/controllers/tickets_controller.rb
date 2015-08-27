@@ -4,7 +4,7 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @ticket = Ticket.new(ticket_params)
+    @ticket = Ticket.create(ticket_params)
   rescue ActiveRecord::RecordNotUnique
     # NOTE: Unique reference generation is subject to race conditions.
     #       Chances of getting here are ASTRONOMICALLY low, but non-zero.
@@ -17,5 +17,13 @@ class TicketsController < ApplicationController
 
   def show
     @ticket = Ticket.find_by_reference(params[:reference])
+  end
+
+  private
+
+  def ticket_params
+    params.require(:ticket).permit(
+      :customer_name, :customer_email, :subject, :body
+    )
   end
 end

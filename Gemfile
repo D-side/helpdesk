@@ -8,7 +8,7 @@ gem 'sqlite3'
 # ...except NoSQLs?
 
 # Data conveniences
-gem 'state_machine'
+gem 'email_validator'
 
 #### Frontend ####
 
@@ -21,6 +21,8 @@ gem 'coffee-rails'
 
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+
+gem 'simple_form'
 
 # Authentication #
 gem 'devise'
