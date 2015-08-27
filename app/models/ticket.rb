@@ -17,8 +17,10 @@ class Ticket < ActiveRecord::Base
     email: true
   validates :state, inclusion: {in: STATES}
 
+  has_many :responses
+
   # TODO: well, no staff exists at this point
-  # belongs_to :owner
+  # belongs_to :user
 
   before_create do
     self.reference = random_reference

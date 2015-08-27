@@ -1,19 +1,18 @@
 require 'test_helper'
 
 class TicketsControllerTest < ActionController::TestCase
-  test "should get new" do
+  test "new ticket form" do
     get :new
     assert_response :success
   end
 
-  test "should get create" do
-    get :create
-    assert_response :success
+  test "should submit a ticket" do
+    post :create, ticket: TicketTest::VALID_SAMPLE
   end
 
   test "should get show" do
-    get :show
+    @ticket = Ticket.create(TicketTest::VALID_SAMPLE)
+    get :show, reference: @ticket.reference
     assert_response :success
   end
-
 end

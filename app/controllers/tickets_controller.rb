@@ -25,6 +25,7 @@ class TicketsController < ApplicationController
 
   def show
     @ticket = Ticket.find_by_reference!(params[:reference])
+    @response = @ticket.responses.build
   end
 
   private

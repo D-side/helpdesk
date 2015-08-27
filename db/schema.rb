@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827115051) do
+ActiveRecord::Schema.define(version: 20150827131753) do
+
+  create_table "responses", force: :cascade do |t|
+    t.integer  "ticket_id"
+    t.integer  "user_id"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "responses", ["ticket_id"], name: "index_responses_on_ticket_id"
+  add_index "responses", ["user_id"], name: "index_responses_on_user_id"
 
   create_table "tickets", force: :cascade do |t|
     t.string   "reference"

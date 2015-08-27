@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     param: :reference,
     path: '',
     path_names: { new: '' },
-    only: [:new, :create, :show]
+    only: [:new, :create, :show] do
+    resources :responses, only: [:create]
+  end
 
   # Provides root_path helper and should never match
   root 'tickets#new'

@@ -1,0 +1,10 @@
+.well.well-sm
+  p
+    - if response.from_staff?
+      span.label.label-primary= response.author
+    - else
+      span.label.label-default= response.author
+    span.label.label-info= l response.created_at, format: :short
+  .content
+    = simple_format response.body
+  
