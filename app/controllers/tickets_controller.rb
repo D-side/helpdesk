@@ -5,6 +5,13 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.create(ticket_params)
+    if @ticket.persisted?
+      redirect_to @ticket
+    else
+      # validation failure?
+      render :new
+    end
+
   rescue ActiveRecord::RecordNotUnique
     # NOTE: Unique reference generation is subject to race conditions.
     #       Chances of getting here are ASTRONOMICALLY low, but non-zero.
@@ -16,7 +23,7 @@ class TicketsController < ApplicationController
   end
 
   def show
-    @ticket = Ticket.find_by_reference(params[:reference])
+    @ticket = Ticket.find_by_reference!(params[:reference])
   end
 
   private

@@ -24,6 +24,10 @@ class Ticket < ActiveRecord::Base
     self.reference = random_reference
   end
 
+  def to_param
+    reference
+  end
+
   private
 
   def random_three_from(chars)
