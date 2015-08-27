@@ -1,0 +1,14 @@
+- flash.each do |k, v|
+  - case(k)
+  - when /alert|error/
+    .alert.alert-danger
+      button type="button" class="close" data-dismiss="alert" aria-label="Close"
+        span aria-hidden="true"
+          | &times;
+      = v
+  - when /success|notice/
+    .alert.alert-success
+      button type="button" class="close" data-dismiss="alert" aria-label="Close"
+        span aria-hidden="true"
+          | &times;
+      = v
