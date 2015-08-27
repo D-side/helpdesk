@@ -6,7 +6,8 @@
   .panel-body
     = @ticket.body
   .panel-footer
-    span.label.label-success= "Created #{l @ticket.created_at, format: :short}"
+    span.label.label-success Created #{l @ticket.created_at, format: :short}
+    span.label.label-info Updated #{l @ticket.updated_at, format: :short}
 
 = render @ticket.responses.select(&:persisted?)
 

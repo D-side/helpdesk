@@ -13,3 +13,4 @@
 
 * Email sending is slow. This project uses **unconfigured** ActiveJob, and
   sends emails **synchronously**. Configure ActiveJob to mitigate this.
+* Improve markup. It does the job, but does it poorly.
