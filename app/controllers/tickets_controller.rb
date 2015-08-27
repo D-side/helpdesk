@@ -6,6 +6,7 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.create(ticket_params)
     if @ticket.persisted?
+      TicketMailer.received_notification(@ticket).deliver_later
       redirect_to @ticket
     else
       # validation failure?

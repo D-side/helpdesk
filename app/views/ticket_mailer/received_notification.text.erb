@@ -1,0 +1,9 @@
+Greetings, <%= @ticket.customer_name %>!
+
+You have received this email because someone (possibly you) has left a support request at our helpdesk.
+
+This ticket has been assigned a reference: <%= @ticket.reference %>
+
+  <%= ticket_url @ticket %>
+
+If you didn't send this request, ignore this email.

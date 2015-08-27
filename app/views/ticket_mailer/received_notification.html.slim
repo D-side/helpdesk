@@ -1,0 +1,14 @@
+p Greetings, #{@ticket.customer_name}!
+
+p You have received this email because someone (possibly you) has left a support
+  request at our helpdesk.
+
+h4= link_to @ticket do
+  code= @ticket.reference
+  | : #{@ticket.subject}
+
+p If the above link doesn't work, open the following URL in your browser:
+
+pre= ticket_url @ticket
+  
+p If you didn't send this request, ignore this email.
