@@ -1,0 +1,21 @@
+p Greetings, #{@ticket.customer_name}!
+
+p You have received this email because someone (possibly you) has left a support
+  request at our helpdesk and a reply#{" by our staff" if @response.from_staff?}
+  was just left:
+hr/
+.response
+  = simple_format @response.body
+hr/
+
+p To see the entire history and reply, visit the ticket page:
+
+h4= link_to @ticket do
+  code= @ticket.reference
+  | : #{@ticket.subject}
+
+p If the above link doesn't work, open the following URL in your browser:
+
+pre= ticket_url @ticket
+  
+p If you didn't send this request, ignore this email.

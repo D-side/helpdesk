@@ -4,6 +4,10 @@ class Response < ActiveRecord::Base
 
   validates :body, presence: true
 
+  after_create do
+    TicketMailer.response_notification(self).deliver_later
+  end
+
   def from_staff?
     user.present?
   end

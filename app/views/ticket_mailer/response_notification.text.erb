@@ -1,0 +1,13 @@
+Greetings, <%= @ticket.customer_name %>!
+
+You have received this email because someone (possibly you) has left a support request at our helpdesk and a reply<%=" by our staff" if @response.from_staff? %> was just left:
+
+---
+<%= @response.body%>
+---
+
+To see the entire history and reply, visit the ticket page:
+
+  <%= ticket_url @ticket %>
+
+If you didn't send this request, ignore this email.
