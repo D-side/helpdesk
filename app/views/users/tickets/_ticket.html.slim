@@ -1,0 +1,12 @@
+.panel.panel-default
+  .panel-heading
+    h3.panel-title
+      code.pull-right= ticket.reference
+    h2.panel-title= link_to ticket.subject, [:users, ticket]
+  .panel-body
+    = ticket.body
+  .panel-footer
+    span.label.label-success Created #{l ticket.created_at, format: :short}
+    span.label.label-info Updated #{l ticket.updated_at, format: :short}
+    - if ticket.owner == current_user
+      span.label.label-warning Assigned to you!

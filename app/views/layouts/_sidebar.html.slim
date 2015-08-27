@@ -1,0 +1,21 @@
+- if user_signed_in?
+  .well
+    h4= current_user.username
+    = link_to destroy_user_session_path, method: :delete do
+      | Log out
+
+  h4 Ticket lists:
+  ul
+    li= link_to controller: 'users/tickets', action: :index, scope: nil do
+      | Unassigned
+    - %w(open on_hold closed).each do |status|
+      li= link_to controller: 'users/tickets', action: :index, scope: status do
+        = status.humanize
+
+  = form_tag({controller: 'users/tickets', action: :find}, method: :get) do
+    = text_field_tag :reference, nil, placeholder: 'Jump to ticket...', class: 'form-control'
+
+- else
+  .well
+    = link_to new_user_session_path, class: 'btn btn-default btn-block' do
+      | Staff login

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :users do
+  get 'responses/edit'
+  end
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
@@ -7,9 +11,11 @@ Rails.application.routes.draw do
 
   namespace :users do
     resources :tickets, param: :reference, only: [:index, :show] do
-      get '/:scope', on: :collection, action: :index
-      resources :responses, only: [:create, :edit, :update]
+      get 'filter/:scope', on: :collection, action: :index, as: :filter
+      get :find, on: :collection
+      resources :responses, only: [:create]
     end
+    resources :responses, only: [:edit, :update]
   end
 
   resources :tickets,

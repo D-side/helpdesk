@@ -4,8 +4,16 @@ class Response < ActiveRecord::Base
 
   validates :body, presence: true
 
+  before_create do
+    self.ticket.state = 'waiting_for_staff' unless self.from_staff?
+  end
+
   after_create do
     TicketMailer.response_notification(self).deliver_later
+  end
+
+  def editable_by?(editor)
+    editor == user || editor.is_admin?
   end
 
   def from_staff?

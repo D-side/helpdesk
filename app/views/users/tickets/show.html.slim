@@ -1,0 +1,18 @@
+.panel.panel-default
+  .panel-heading
+    h3.panel-title
+      code.pull-right= @ticket.reference
+    h2.panel-title= @ticket.subject
+  .panel-body
+    = @ticket.body
+  .panel-footer
+    span.label.label-success Created #{l @ticket.created_at, format: :short}
+    span.label.label-info Updated #{l @ticket.updated_at, format: :short}
+
+= render @ticket.responses.select(&:persisted?)
+
+h4 Leave a reply:
+
+= simple_form_for [:users, @ticket, @response] do |f|
+  = f.input :body
+  = f.submit class: 'btn btn-success'
