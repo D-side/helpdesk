@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :rememberable, :validatable, :lockable
 
+  has_many :responses
+
+  has_many :tickets, foreign_key: 'owner_id'
+
   def admin?
     is_admin
   end
