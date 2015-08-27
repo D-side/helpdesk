@@ -21,7 +21,6 @@ class Ticket < ActiveRecord::Base
   # belongs_to :owner
 
   before_create do
-    self.state     = 'waiting_for_staff'
     self.reference = random_reference
   end
 
