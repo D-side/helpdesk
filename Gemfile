@@ -7,6 +7,9 @@ gem 'sqlite3'
 # ...then it's hard to imagine what it WON'T work with
 # ...except NoSQLs?
 
+# Data conveniences
+gem 'state_machine'
+
 #### Frontend ####
 
 gem 'slim'
